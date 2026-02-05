@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.7.9)  5 FEB 2026 15:06
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.7.9)  5 FEB 2026 16:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1224,7 +1224,7 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.53937> not available
  (Exercises.tex [2
 
 ]
-Overfull \hbox (3.72984pt too wide) in paragraph at lines 27--28
+Overfull \hbox (3.72984pt too wide) in paragraph at lines 29--30
 []\TU/SimSun(0)/m/n/10.53937 从 \TU/lmr/m/n/10.53937 Hilbert \TU/SimSun(0)/m/n/1
 0.53937 模 块 结 构 来 解 读，|  这 应 该 看 成 是 内 积 的 传 递。|  这 一 点 体 现 在 $\OMS/cmsy/m/n/10
 .53937 h\OML/cmm/m/it/10.53937 e[] \OMS/cmsy/m/n/10.53937 
