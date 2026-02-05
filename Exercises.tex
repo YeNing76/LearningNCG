@@ -1,0 +1,49 @@
+\subsection{Chapter 2}
+\textbf{Exercise 2.7} Show that $A - A$-bimodule given by $A$ itself is an element in $\textbf{KK}_f(A,A)$ by establishing that the following formula defines an $A$-valued inner product $\langle\cdot,\cdot\rangle_A:A\times A\rightarrow A$: $\langle a, a^{\prime}\rangle_A=a^*a^{\prime}: (a,a^{\prime}\in A)$
+
+\textbf{Idea of Solution:} 为了解这个问题，最主要的是正确理解$\langle a, a^{\prime}\rangle_A=a^*a^{\prime}: (a,a^{\prime}\in A)$中的$a$. 我们需要意识到这是属于$A$的一个元素，因此是一个矩阵，另外这是一个方阵。究其原因是$A$是自身的bimodule，也就是不论从左还是从右皆能作用其自身，因此长度必须等于宽度。此外，我们还需要正确理解方阵的内积：$\langle a, a^{\prime}\rangle$。这里其实让$a$做了一个转置共轭然后与$a^{\prime}$进行普通意义下的矩阵乘法。在些理解的基础上就不难验证定义2.9中诸条件如$\langle e_1, a\cdot e_2\rangle_E=\langle a^*\cdot e_1, e_2\rangle$.其实就是利用乘法的结合律。
+
+\textbf{Definition 2.11} The \textit{Kasparov product} $F\circ E$ between Hilbert bimodules $E\in \textbf{KK}_f(A,B)$ and $F\in \textbf{KK}_f(B,C)$ is given by the balanced tensor product 
+$F\circ E \coloneqq E\otimes_B F\quad \quad\quad(E\in\mathbf{KK}_f(A,B), F\in \mathbf{KK}_f(B,C))$,
+so that $F\circ E\in \textbf{KK}_f(A,C)$, with $C$-valued inner product given on elementary tensors by 
+\begin{equation}
+    \langle e_1\otimes f_1, e_2\otimes f_2\rangle_{E\otimes_B F}=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F,
+\end{equation}
+and extended linearly to all of $E\otimes F$
+
+\textbf{How to understand the Definition of the balanced tensor product （BTP）?} If $E$ is a right $B$-module, and $F$ is a left $A$-module, we can form the \textit{balanced tensor product}: 
+\begin{equation}
+    E\otimes_B F\coloneqq E\otimes F/ \left\{\sum_i(e_ia_i\otimes f_i-e_i\otimes a_if_i):\quad a_i\in B, e_i\in E, f_i\in F\right\}.
+\end{equation}
+In other words, the quotient imposes $A$-linearity of the tensor product, i.e., in $E\otimes_BF$ we have 
+\[ea\otimes_Bf=e\otimes_Baf; \quad (a\in B, e\in E, f\in F).\]
+
+\textbf{总结和AI讨论之后的一些看法}：首先，关于这个BTP的直观理解是我们在使用quotient粘合这里的$E$和$F$。如果直接做代数张量积$E\otimes F$, 我们会得到一个巨大的空间，其中$e\cdot b\otimes f$与$e\otimes b\cdot f$是两个完全不同的元素。但在组合态射时，我们强制令其代表同一个“路径”。其次，从代数的角度来看在代数张量积$E\otimes F$中，元素的形式是:\[\sum_ie_i\otimes f_i.\]如果我们允许$E$的右$B$作用与$F$的左$B$作用独立存在，我们就会得到\textbf{过多的自由度}。这会导致无法定义$A-C$双模结构；无法定义内积；无法定义组合态射。为此我们进行了balanced quotient： \[E\otimes_BF\coloneq(E\otimes F)/N,\]其中$N$是由所有\[eb\otimes f-e\otimes bf\]生成的子空间。换句话说$N$是所有“不兼容$B$”的误差项，而quotient的作用是将所有误差项都杀掉。其结果就是$B$的左右作用被强制一致；$B$不再出现在结果中，最终得到一个真正的$A-C$模块了。最后让我们从Hilbert 模块版的角度来拆解一下这个定义的意义和来源。如果我们想定义一个$C$值内积：\[\langle e_1\otimes f_1,e_2\otimes f_2\rangle\in C.\]但是$E$的内积给的是$B$：\[\langle e_1, e_2\rangle_E\in B.\]与此同时$F$的内积却是：\[\langle f_1,f_2\rangle_F\in C.\]唯一能把它们接起来的方式是：\[\langle e_1\otimes f_1,e_2\otimes f_2\rangle=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F.\]此外还需要注意的是在$e\otimes bf$的计算中优先级永远是先算$bf$，再做张量积。
+
+\textbf{关于 Kasparov Product 的一些理解：} 
+
+从代数直觉上来说Kaparov Product是将中间的B也消掉了。其结果就是$F\circ E\coloneq E\otimes_B F$. 
+
+从Hilbert模块结构来解读，这应该看成是内积的传递。这一点体现在$\langle e_1\otimes f_1, e_2\otimes f_2\rangle_{E\otimes_B F}=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F$中。这个表达式的右边其实完成了三个步骤：先在$E$中算出一个$B$元素$b\coloneqq \langle e_1,e_2\rangle_E\in B$; 然后现用这个$B$元素作用于$F$上形成$bf_2\in F$; 最后再在$F$里算$C$值内积$\langle f_1, bf_2\rangle_F\in C$。
+
+
+
+\textbf{Example 2.10} More generally, let $\phi:A\rightarrow B$ be a *-algebra homomorphism between matrix algebras $A$ and $B$. From it, we can construct a Hilbert bimodule $E_\phi$ in $\textbf{KK}_f(A,B)$ as follows. Let $E_\phi$ be $B$ as a vector space with the natural right $B$-module structure and inner product, but with $A$ acting on the left via the homomorphism $\phi$:
+\begin{equation}
+    a\cdot b=\phi(a)b; \,\quad (a\in A, b\in E_\phi).
+\end{equation}
+
+\textbf{Exercise 2.8} Show that the association $\phi\leadsto E_{\phi}$ from Example 2.10 is \textit{natural} in the sense that 
+\begin{enumerate}
+    \item $E_{\text{id}_A}\simeq A\in \textbf{KK}_f(A, A)$,
+    \item for *-algebra homomorphisms $\phi:A\rightarrow B$ and $\psi:B\rightarrow C$ we have an isomorphism \begin{equation}
+        E_\psi \circ E_\phi\equiv E_\phi\otimes_B E_\psi\simeq E_{\psi\circ\psi}\in\textbf{KK}_f(A, C),
+    \end{equation} that is, as $A-C$-bimodules.
+\end{enumerate}\
+
+\textbf{Ideas to Solution:} Let us talk about the meaning of the symbol $\simeq$ in the context of NCG first. If we see $E\simeq F$, it not only means there is a one-to-one mapping relation between the elements in the two sets, it also means "conservation of structure". More specifically, to fulfill $E\simeq F$, there must exist a biprojectivity $\Phi:E\rightarrow F$ such that:
+\begin{enumerate}
+    \item $\Phi(a\cdot e)=a\cdot \Phi(e)$
+    \item $\Phi(e\cdot b)=\Phi(e)\cdot b$
+    \item $\langle \Phi(e_1),\Phi(e_2)\rangle_F=\langle e_1, e_2\rangle_E$
+\end{enumerate} 
