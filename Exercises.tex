@@ -1,9 +1,47 @@
+%!TEX root = LearningNCG.tex
 \subsection{Chapter 2}
-\textbf{Definition 2.8: An algebra (bi)module:}
+\textbf{Definition 2.4} A \textit{representation} of a finite-dimensional *-algebra $A$ is a pair $(H,\pi)$ where $H$ is a (finite-dimensional, complex) inner product space and $\pi$ is a *-algebra map \[\pi:A\rightarrow L(H).\] A representation $(H,\pi)$ is called irreducible if $H\neq0$ and the only subspaces in $H$ that are left invariant under the action of $A$ are $\{0\}$ or $H$.
+
+\textbf{对这个定义的理解：} 这里所谓的representation其实就是把抽象代数$A$中的元素变成Hilbert空间$H$上的具体算子。也就是说，$A$本来是一个抽象的“算子代数”，而$L(H)$是“真正的算子代数（矩阵）”；而$\pi$则是把抽象算子变成具体算子的“解释器”。
+
+为什么这里的映射必须是$*-algebra$ map 呢？原因是$*-algebra A$有加法、乘法、单位元，同时$A$有$*$运算（类似共轭转置）。相应的，为保持住这些结构，$\pi$ 就必须满足：\[\pi(a+b)=\pi(a)+\pi(b)\quad \text{加法}\] \[\pi(ab)=\pi(a)\pi(b)\quad \text{乘法}\]及\[\pi(a^*)=\pi(a)^* \quad\text{共轭}\] 尤其是这最后一条意味着抽象的“自伴算子”（厄米算子）会被表示成真正的“自伴矩阵”。
+
+此外， 这里选择 Hilbert 空间也是有原因的。因为 Hilbert 空间有内积，有范数，有完备性，可以在上面讨论算子的连续性、自伴性及谱。它是量子力学的自然舞台也是 $C^*$ 的唯一合理载体。而关于Hilbert空间的$ L(H)$的这种写法也有其特定的含义：$ L(H)$代表了$H$上所有有界线性算子的集合，换句话说就是所有$n\times n$复矩阵的集合。即 \[L(H)\cong M_n(C).\] 之所以这里不采用 $M_n(C)$ 是因为只有在有限维的情况下 $L(H)$ 才能和矩阵划等号，而在无限维的情况下矩阵不再是合适的语言。但“线性算子”仍然是核心对象。所以数学家统一将其写成：\[L(H)=\{T:H\rightarrow H|T \text{是有界线性算子}\}。\]另外，这里强调“有界”的原因是在无限维的 Hilbert 空间里有些线性算子是“无界”的，如微分算子。这种无界算子是不能被放进$C^*$代数里的，也因此不能直接用于表示论。
+
+\textbf{ Definition 2.6} Two representations $(H_1,\pi_1)$ and $(H_2,\pi_2)$ of a $*$-algebra $A$ are \textit{unitarily equivalent} if there exists a unitary map $U:H_1\rightarrow H_2$ such that \[\pi_1(a)=U^*\pi_2(a)U\]
+
+\textbf{ Definition 2.7} The \textit{structure space} $\hat{A}$ of $A$ is the set of all unitary equivalence classes of irreducible representations of $A$.
+
+\textbf{ Definition 2.8: An algebra (bi)module:}
+
+Let $A, B$ be algebras (not necessarily matrix algebras). A left $A$-module is a vector space $E$ that carries a left representation of $A$, i.e., there is a bilinear map $A\times E\ni (a,e)\mapsto a\cdot e\in E$ such that \[(a_1a_2)\cdot e=a_1\cdot(a_2\cdot e); \quad (a_1,a_2\in A, e\in E).\] 
+Similarly, a right $B$-module is a vector space $F$ that carries a right representation of $B$, i.e., there is a bilinear map $F\times B\ni (f,b)\mapsto f\cdot b\in F$ such that \[f\cdot(b_1b_2)=(f\cdot b_1)\cdot b_2;\quad (b_1, b_2\in B, f\in F).\] Finally, an $A-B$-\textit{bimodule} $E$ is both a left $A$-module and a right $B$-module, with mutually commuting actions: \[a\cdot(e\cdot b)=(a\cdot e)\cdot b; \quad (a\in A, b\in B, e\in E).\]
+
+\textbf{关于(bi)module 定义(Definition 2.8)的一些看法}：要正确理解这个定义中的内容我们需要了解什么是“模”。拿这里提到的$B$-module来说，可以将其看成一个集合，而该集合的成员不一定是普通的数，而是更抽象意义上的算子，数当作是一种特殊的算子。因此这里提到的 Hilbert Module 可以被看成是 Hilbert Space 的一种推广。相应的这里提到的 vector space $E$ 和 $F$也不是我们从线性代数那里学到的向量，在那里组成向量的是一个个的数。而这里的向量元素全部来自$B$-module，即一个个的算子。因此这个向量是之前线性代数中的向量的一个推广。具体来说在 Hilbert module $B^m$里，向量是一个$m$维列向量，其中每个分量是$B$的元素。假如我们有$B=M_2(C)$，那么：\[e=\begin{pmatrix}
+    A_1 \\ A_2 \\ A_3
+\end{pmatrix}, A_i\in M_2(C).\] 也就是说该向量$e$的每一个分量都是一个$2\times2$的矩阵！当然了，必须注意的是这个例子也是个特殊情况，而在一般情况下模$B$的元素有可能根本不是矩阵，它可能是一个函数，一个阿贝尔群或是一个算子，等等。
+
+\textbf{Definition 2.9} Let $A, B$ be matrix algebras, A \textit{Hilbert bimodule} for the pair $(A, B)$ is given by an $A-B$-bimodule $E$ together with a $B$-valued inner product $\langle\cdot,\cdot\rangle_E:E\times E\rightarrow B$ satisfying \[\langle e_1, a\cdot e_2\rangle_E=\langle a^*\cdot e_1, e_2\rangle_E;\quad(e_1,e_2\in E, a\in A),\quad[I] \] \[\langle e_1,e_2\cdot b\rangle_E = \langle e_1,e_2 \rangle_Eb;\,[II.1]\quad\langle e_1,e_2\rangle^*_E=\langle e_2,e_1\rangle_E;\quad(e_1, e_2\in E, b\in B), [II.2]\] \[\langle e,e\rangle_E\geq 0 \, \text{with equality if and only if }e=0;\quad (e\in E).\quad[III]\] The set of Hilbert bimodules for $(A,B)$ will be denoted by $\mathbf{KK}_f(A,B)$.
+
+\textbf{理解与例子：} 上述定义条件中$[I]$体现了左作用与内积的兼容性；$[II.1]$体现了右作用与内积的兼容性；$[II.2]$体现了自伴性；$[III]$则体现了正性，从而保证内积是“非退化”的。上面条件的重要性在于它们保证了$E$是一个真正的“ Hilbert 空间的非交换版本”。
+
+比如，现在我们有\[A=M_2(C),\quad B=M_3(C).\] 此时可取$E=M_{2\times 3}(C)$ 形成一个$A-B$双模的典型例子。我们不难看到此时的左作用和右作用分别对应了普通的矩阵乘法。也不难看出所谓的$B$值内积\[\langle e_1,e_2\rangle_E\coloneqq e_1^*e_2\in M_3(C)\]确如所料的产生的结果落在$B$里。要验证左作用的兼容性\[\langle e_1,a\cdot e_2\rangle_E=\langle a^*\cdot e_1, e_2\rangle_E\]我们可以看到左边：\[\langle e_1,ae_2\rangle=e_1^*(ae_2)\]而右边：\[\langle a^*e_1,e_2\rangle=(a^*e_1)^*e_2=e^*_1ae_2\]因此左右相等。用类似的思路不难证明右作用兼容性，自伴性和正性都能满足。
 
 \textbf{Exercise 2.7} Show that $A - A$-bimodule given by $A$ itself is an element in $\textbf{KK}_f(A,A)$ by establishing that the following formula defines an $A$-valued inner product $\langle\cdot,\cdot\rangle_A:A\times A\rightarrow A$: $\langle a, a^{\prime}\rangle_A=a^*a^{\prime}: (a,a^{\prime}\in A)$
 
 \textbf{Idea of Solution:} 为了解这个问题，最主要的是正确理解$\langle a, a^{\prime}\rangle_A=a^*a^{\prime}: (a,a^{\prime}\in A)$中的$a$. 我们需要意识到这是属于$A$的一个元素，因此是一个矩阵，另外这是一个方阵。究其原因是$A$是自身的bimodule，也就是不论从左还是从右皆能作用其自身，因此长度必须等于宽度。此外，我们还需要正确理解方阵的内积：$\langle a, a^{\prime}\rangle$。这里其实让$a$做了一个转置共轭然后与$a^{\prime}$进行普通意义下的矩阵乘法。在些理解的基础上就不难验证定义2.9中诸条件如$\langle e_1, a\cdot e_2\rangle_E=\langle a^*\cdot e_1, e_2\rangle$.其实就是利用乘法的结合律。
+
+
+\textbf{How to understand the Definition of the balanced tensor product （BTP）?} If $E$ is a right $A$-module, and $F$ is a left $A$-module, we can form the \textit{balanced tensor product}: 
+\begin{equation}
+    E\otimes_A F\coloneqq E\otimes F/ \left\{\sum_i(e_ia_i\otimes f_i-e_i\otimes a_if_i):\quad a_i\in A, e_i\in E, f_i\in F\right\}.
+\end{equation}
+In other words, the quotient imposes $A$-linearity of the tensor product, i.e., in $E\otimes_AF$ we have 
+\[ea\otimes_Af=e\otimes_Aaf; \quad (a\in A, e\in E, f\in F).\]
+
+\textbf{总结和AI讨论之后的一些看法}：首先，关于这个BTP的直观理解是我们在使用quotient粘合这里的$E$和$F$。如果直接做代数张量积$E\otimes F$, 我们会得到一个巨大的空间，其中$e\cdot a\otimes f$与$e\otimes a\cdot f$是两个完全不同的元素。但在组合态射时，我们强制令其代表同一个“路径”。其次，从代数的角度来看在代数张量积$E\otimes F$中，元素的形式是:\[\sum_ie_i\otimes f_i.\]如果我们允许$E$的右$A$作用与$F$的左$A$作用独立存在，我们就会得到\textbf{过多的自由度}。这会导致无法定义$A-C$双模结构；无法定义内积；无法定义组合态射。为此我们进行了balanced quotient： \[E\otimes_AF\coloneq(E\otimes F)/N,\]其中$N$是由所有\[ea\otimes f-e\otimes af\]生成的子空间。换句话说$N$是所有“不兼容$A$”的误差项，而 quotient 的作用是将所有误差项都杀掉。其结果就是$A$的左右作用被强制一致；$A$不再出现在结果中，最终得到一个真正的$A-C$模块了。最后让我们从 Hilbert 模块版的角度来拆解一下这个定义的意义和来源。如果我们想定义一个$C$值内积：\[\langle e_1\otimes f_1,e_2\otimes f_2\rangle\in C.\]但是$E$的内积给的是$A$：\[\langle e_1, e_2\rangle_E\in A.\]与此同时$F$的内积却是：\[\langle f_1,f_2\rangle_F\in C.\]唯一能把它们接起来的方式是：\[\langle e_1\otimes f_1,e_2\otimes f_2\rangle=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F.\]此外还需要注意的是在$e\otimes af$的计算中优先级永远是先算$af$，再做张量积。
+
+另：在复习有关群的知识时，当我看到商群这个概念时突然联想到这里的BTP，于是就明白了为什么这里的定义中引入了“商”的形式。在和AI的讨论中我提到一个比喻：当我们研究一个社区时，可以以“人”为单位，也可以以“家庭”为单位。当以家庭为单位时，属于同一个家庭的不同人看成是等价的。
 
 \textbf{Definition 2.11} The \textit{Kasparov product} $F\circ E$ between Hilbert bimodules $E\in \textbf{KK}_f(A,B)$ and $F\in \textbf{KK}_f(B,C)$ is given by the balanced tensor product 
 $F\circ E \coloneqq E\otimes_B F\quad \quad\quad(E\in\mathbf{KK}_f(A,B), F\in \mathbf{KK}_f(B,C))$,
@@ -13,20 +51,11 @@ so that $F\circ E\in \textbf{KK}_f(A,C)$, with $C$-valued inner product given on
 \end{equation}
 and extended linearly to all of $E\otimes F$
 
-\textbf{How to understand the Definition of the balanced tensor product （BTP）?} If $E$ is a right $B$-module, and $F$ is a left $A$-module, we can form the \textit{balanced tensor product}: 
-\begin{equation}
-    E\otimes_B F\coloneqq E\otimes F/ \left\{\sum_i(e_ia_i\otimes f_i-e_i\otimes a_if_i):\quad a_i\in B, e_i\in E, f_i\in F\right\}.
-\end{equation}
-In other words, the quotient imposes $A$-linearity of the tensor product, i.e., in $E\otimes_BF$ we have 
-\[ea\otimes_Bf=e\otimes_Baf; \quad (a\in B, e\in E, f\in F).\]
-
-\textbf{总结和AI讨论之后的一些看法}：首先，关于这个BTP的直观理解是我们在使用quotient粘合这里的$E$和$F$。如果直接做代数张量积$E\otimes F$, 我们会得到一个巨大的空间，其中$e\cdot b\otimes f$与$e\otimes b\cdot f$是两个完全不同的元素。但在组合态射时，我们强制令其代表同一个“路径”。其次，从代数的角度来看在代数张量积$E\otimes F$中，元素的形式是:\[\sum_ie_i\otimes f_i.\]如果我们允许$E$的右$B$作用与$F$的左$B$作用独立存在，我们就会得到\textbf{过多的自由度}。这会导致无法定义$A-C$双模结构；无法定义内积；无法定义组合态射。为此我们进行了balanced quotient： \[E\otimes_BF\coloneq(E\otimes F)/N,\]其中$N$是由所有\[eb\otimes f-e\otimes bf\]生成的子空间。换句话说$N$是所有“不兼容$B$”的误差项，而quotient的作用是将所有误差项都杀掉。其结果就是$B$的左右作用被强制一致；$B$不再出现在结果中，最终得到一个真正的$A-C$模块了。最后让我们从Hilbert 模块版的角度来拆解一下这个定义的意义和来源。如果我们想定义一个$C$值内积：\[\langle e_1\otimes f_1,e_2\otimes f_2\rangle\in C.\]但是$E$的内积给的是$B$：\[\langle e_1, e_2\rangle_E\in B.\]与此同时$F$的内积却是：\[\langle f_1,f_2\rangle_F\in C.\]唯一能把它们接起来的方式是：\[\langle e_1\otimes f_1,e_2\otimes f_2\rangle=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F.\]此外还需要注意的是在$e\otimes bf$的计算中优先级永远是先算$bf$，再做张量积。
-
 \textbf{关于 Kasparov Product 的一些理解：} 
 
 从代数直觉上来说Kaparov Product是将中间的B也消掉了。其结果就是$F\circ E\coloneq E\otimes_B F$. 
 
-从Hilbert模块结构来解读，这应该看成是内积的传递。这一点体现在$\langle e_1\otimes f_1, e_2\otimes f_2\rangle_{E\otimes_B F}=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F$中。这个表达式的右边其实完成了三个步骤：先在$E$中算出一个$B$元素$b\coloneqq \langle e_1,e_2\rangle_E\in B$; 然后现用这个$B$元素作用于$F$上形成$bf_2\in F$; 最后再在$F$里算$C$值内积$\langle f_1, bf_2\rangle_F\in C$。
+从 Hilbert 模块结构来解读，这应该看成是内积的传递。这一点体现在$\langle e_1\otimes f_1, e_2\otimes f_2\rangle_{E\otimes_B F}=\langle f_1,\langle e_1, e_2\rangle_Ef_2\rangle_F$中。这个表达式的右边其实完成了三个步骤：先在$E$中算出一个$B$元素$b\coloneqq \langle e_1,e_2\rangle_E\in B$; 然后现用这个$B$元素作用于$F$上形成$bf_2\in F$; 最后再在$F$里算$C$值内积$\langle f_1, bf_2\rangle_F\in C$。
 
 
 
@@ -35,17 +64,292 @@ In other words, the quotient imposes $A$-linearity of the tensor product, i.e., 
     a\cdot b=\phi(a)b; \,\quad (a\in A, b\in E_\phi).
 \end{equation}
 
+\textbf{关于例2.10的一些理解：} 简单说来这个例子是想告诉我们任何代数\textit{同态}$\phi:A\rightarrow B$ 都\textit{自动}给出一个从$A$到$B$的 Hilbert 双模。换句话说：代数同态是$\mathbf{KK}$理论中的“平凡态射”。更具体地说是我们利用代数同态$\phi$很自然地便构造了一个 Hilbert $A-B$ 双模向量空间 $E_{\phi}$：\[E_{\phi}=B,\]即$E_{\phi}$就是$B$本身。在些基础上$E_{\phi}$的右模结构及内积分别就是$B$自然的右乘和$B$自己的标准$B$值内积。而其左模则是通过$\phi$来实现：\[a\cdot b=\phi(a)b.\]由此我们不难验证 Definition 2.9中的诸条件从而说明其是一个合法的双模。
+
 \textbf{Exercise 2.8} Show that the association $\phi\leadsto E_{\phi}$ from Example 2.10 is \textit{natural} in the sense that 
 \begin{enumerate}
     \item $E_{\text{id}_A}\simeq A\in \textbf{KK}_f(A, A)$,
-    \item for *-algebra homomorphisms $\phi:A\rightarrow B$ and $\psi:B\rightarrow C$ we have an isomorphism \begin{equation}
-        E_\psi \circ E_\phi\equiv E_\phi\otimes_B E_\psi\simeq E_{\psi\circ\psi}\in\textbf{KK}_f(A, C),
+    \item for $*$-algebra homomorphisms $\phi:A\rightarrow B$ and $\psi:B\rightarrow C$ we have an isomorphism \begin{equation}
+        E_\psi \circ E_\phi\equiv E_\phi\otimes_B E_\psi\simeq E_{\psi\circ\phi}\in\textbf{KK}_f(A, C),
     \end{equation} that is, as $A-C$-bimodules.
 \end{enumerate}\
 
-\textbf{Ideas to Solution:} Let us talk about the meaning of the symbol $\simeq$ in the context of NCG first. If we see $E\simeq F$, it not only means there is a one-to-one mapping relation between the elements in the two sets, it also means "conservation of structure". More specifically, to fulfill $E\simeq F$, there must exist a biprojectivity $\Phi:E\rightarrow F$ such that:
+\textbf{Ideas to Solution:} 对于这里的第一点，我们取$\phi= \text{id}_A:A\rightarrow A$. 按照 Example 2.10的精神 $E_{\text{id}_A}$ 作为向量空间就是$A$本身。因此其右$A$-模用右乘；左$A$-模用$\text{id}_A$左乘，也就是普通的左乘；而内积则是$\langle a_1,a_2\rangle=a_1^*a_2\in A$. 因此，作为$A-A$双模$E_{\text{id}_A}$与$A$是完全一样的；同时，作为 Hilbert 模块，内积也是同一个。因此结论就是：\[E_{\text{id}_A}\simeq A\in \mathbf{KK}_f(A, A).\]
+关于第二点，我们应该意识到两个同态映射$\phi:A\rightarrow B$ 和 $\psi:B\rightarrow C$，按照Example 2.10的意思对应了两个向量空间$E_{\phi}\in\mathbf{KK}_f(A, B)$与$E_{\psi}\in\mathbf{KK}_f(B, C)$。然后结合我们对 Kasparov product 的定义，不难看出结论。
+
+\textbf{Exercise 2.9} In the above definition:
 \begin{enumerate}
-    \item $\Phi(a\cdot e)=a\cdot \Phi(e)$
-    \item $\Phi(e\cdot b)=\Phi(e)\cdot b$
-    \item $\langle \Phi(e_1),\Phi(e_2)\rangle_F=\langle e_1, e_2\rangle_E$
-\end{enumerate} 
+    \item Check that $E\otimes_BF$ is an $A-C$-bimoudle.
+    \item Check that $\langle\cdot,\cdot\rangle_{E\otimes_BF}$ defines a $C$-valued inner product.
+    \item Check that $\langle a^*(e_1\otimes f_1),e_2\otimes f_2\rangle_{E\otimes_BF}=\langle e_1\otimes f_1,a(e_2\otimes f_2)\rangle_{E\otimes_BF}$
+\end{enumerate}
+
+\textbf{对 Exercise 2.9的理解：} 从前面的2.8已经看出由给定的两个同态映射$\phi$及$\psi$我们可以构造相应的向量空间$E_{\phi}$及$E_{\psi}$成为$A-B$双模及$B-C$双模。现在我们想要构造一个$A-C$双模，不妨建立同构映射：\[\Phi:E_{\phi}\otimes_BE_{\psi}\rightarrow E_{\psi\circ\phi}.\] 按照 Example 2.10的意思，$E_{\psi\circ\phi}$ 就是$C$本身。其左$A$-模为$a\cdot c=\psi(\phi(a))c$; 右$C$-模即右乘；内积为$\langle c_1, c_2\rangle=c_1^*c_2$.
+
+现在，$E_{\phi}\otimes_BE_{\psi}$的“简单张量”元素是$b\otimes c$, 其中$b\in B, c\in C$. 那么这里最自然的候选映射是：\[\Phi(b\otimes c):=\psi(b)c\in C.\]这相当于是先用$\psi$将$b$推到$C$里，然后再右乘$c$。首先，我们需要检查这个映射是否兼容平衡关系。我们知道在平衡张量积有关系\[(bb^{\prime})\otimes c\sim b\otimes (b^{\prime}\cdot c)=b\otimes \psi(b^{\prime})c.\]现在我们用$\Phi$分别作用于上式的最左边和最右边：\[\text{LHS}=\Phi((bb^{\prime})\otimes c)=\psi(b)\psi(b^{\prime})c.\]与此同时\[\text{RHS}=\Phi(b\otimes\psi(b^{\prime})c)=\psi(b)\psi(b^{\prime})c.\]因此，左右相等，所以\textbf{$\Phi$对平衡关系是兼容的}，因而在商空间上是well-defined.
+
+现在我们检查双模结构，即这一题的第一点。在$E_{\phi}\otimes_B E_{\psi}$ 上，我们有：\[a\cdot(b\otimes c)=(\phi(a)b)\otimes c.\]然后在$\Phi$的作用下，我们得到：\[\Phi(a\cdot(b\otimes c))=\Phi(\phi(a)b\otimes c)=\psi(\phi(a)b)c=\psi(\phi(a))\psi(b)c=(\psi\circ\phi)(a)\cdot\Phi(b\otimes c),\]上式的最右端体现了\textbf{$E_{\psi\circ\phi}$的左$A$-作用}。同时，在张量积上：\[(b\otimes c)\cdot c^{\prime}=b\otimes(cc^{\prime}).\]映射$\Phi$作用其上得：\[\Phi(b\otimes cc^{\prime})=\psi(b)cc^{\prime}=(\psi(b)c)c^{\prime}=\Phi(b\otimes c)\cdot c^{\prime},\]上式体现了\textbf{右$C$-模结构}。综合以上两点可以看到$\Phi$是$A-C$双模同态。
+
+本题的第二点是要求检验\textbf{内积的兼容性}。在 Hilbert 双模的 BTP 里， 内积的标准定义是（这里是$B-C$情形）：
+\[\langle b_1\otimes c_1, b_2\otimes c_2\rangle_C\coloneqq\langle c_1,\langle b_1,b_2\rangle_B\cdot c_2\rangle_C.\]
+代入我们这里的具体内积$\langle b_1,b_2\rangle_B=b^*_1b_2\in B$以及$B$左作用在$E_{\psi}=C$上是$b\cdot c=\psi(b)c$,可得：
+\[\langle b_1\otimes c_1, b_2\otimes c_2\rangle_C=\langle c_1, \psi(b^*_1b_2)c_2\rangle_C=c^*_1\psi(b_1^*b_2)c_2\in C.\]
+另一方面，在$E_{\psi\circ\phi}\simeq C$里，内积是：
+\[\langle \Phi(b_1\otimes c_1),\Phi(b_2\otimes c_2)\rangle=\langle\psi(b_1)c_1,\psi(b_2)c_2\rangle=c^*_1\psi(b_1)^*\psi(b_2)c_2.\]
+因为$\psi$是$*$-同态，有$\psi(b_1)^*=\psi(b_1^*)$。 所以上面的等式正好是前面BTP定义出来的内积。这正是该题的第三点。
+
+\textbf{Definition 2.12} Two matrix algebras $A$ and $B$ are called \textit{Morita equivalent} if there exist elements $E\in\mathbf{KK}_f(A,B)$ and $F\in \mathbf{KK}_f(B,A)$ such that 
+\[E\otimes_BF\simeq A, \quad F\otimes_AE\simeq B,\]
+where $\simeq$ denotes isomorphism as Hilbert bimodules.
+
+\textbf{Example 2.13} A vector space $E=\mathbb{C}^n$ is an $M_n(\mathbb{C})-\mathbb{C}$-bimodule; with the standard $\mathbb{C}$-valued inner product it becomes  Hilbert module for $(M_n(\mathbb{C}),\mathbb{C})$. Similarly, the vector space $F=\mathbb{C}^n$ is a $\mathbb{C}-M_n(\mathbb{C})$-bimodule by right matrix multiplication. An $M_n(\mathbb{C})$-valued inner product is given by
+\[\langle v_1,v_2\rangle=\bar{v}_1v^t_2\in M_n(\mathbb{C}).\]
+We determine the Kasparov products of these Hilbert bimodules as 
+\[E\otimes_{\mathbb{C}}F\simeq M_n(\mathbb{C});\quad F\otimes_{M_n(\mathbb{C})}E\simeq C.\]
+In other words, $E\in\mathbf{KK}_f(M_n(\mathbb{C}),\mathbb{C})$ and $F\in\mathbf{KK}_f(\mathbb{C},M_n(\mathbb{C}))$ are each other's inverse with respect to the Kasparov product. We conclude that $M_n(\mathbb{C})$ and $\mathbb{C}$ are Morita equivalent.
+
+\textbf{Theorem 2.14} \textit{Two matrix algebras are Morita eqivalent if and only if their structrue spaces are isomorphic as finite discrete spaces, i.e. have the same cardinality.}
+
+\textbf{\textit{Proof}} Let $A$ and $B$ be Morita equivalent. Thus there exists Hilbert bimodules $_AE_B$ and $_BF_A$ such that 
+\[E\otimes_BF\simeq A, \quad F\otimes_AE\simeq B.\]
+If $[(\pi_B,H)]\in\hat{B}$ then we can define a representation $\pi_A$ by setting
+\begin{equation}
+    \pi_A:A\rightarrow L(E\otimes_BH); \quad \pi_A(a)(e\otimes v)=ae\otimes v.
+    \label{eqn:ProveMorita}
+\end{equation}
+\textit{Vice versa}, we construct $\pi_B:B\rightarrow L(F\otimes_A W)$ from $[(\pi_A, W)]\in \hat{A}$ by setting $\pi_B(b)(f\otimes w)=bf\otimes w$ and these two maps are on another's inverse. Thus, $\hat{A}\simeq\hat{B}$. 
+
+For the converse, we start with a basic result on irreducible representations of $M_n(\mathbb{C})$
+
+\textbf{关于上面证明的一点想法：}在上面的证明里最让我不可理解的是为什么我们可以说因为有了 $[(\pi_B,H)]\in\hat{B}$ 我们便可以建立如 Eqn.~【\ref{eqn:ProveMorita}】 这样的关系？AI帮我澄清了一些个重要的关节点，如其中的$e\otimes v$是一个简单张量；$A$的左作用只影响$e$；$v$是$B$-模，是通过$\pi_B$这个表示形成的向量空间中的一个具体元素（我感觉这一点尤其重要，因为它让$\pi_B$与$\pi_A$产生联结）。而要明白Eqn.~【\ref{eqn:ProveMorita}】是否为一个好的定义，就是要看这个定义是不是会破坏张量的平衡：
+\[
+(e\cdot v)\otimes v\sim e\otimes \pi_B(b)v.
+\]
+为此，我们先看左作用：
+\[
+\pi_A(a)((e\cdot v)\otimes v)=a(e\cdot v)\otimes v=(ae)\cdot v\otimes v\sim ae\otimes \pi_B(b)v = \pi_A(a)(e\otimes \pi_B(b)v).
+\]
+在上面的推导中我们运用到了Eqn.~【\ref{eqn:ProveMorita}】，而这个推导可以看出如此定义的$\pi_A$的确保证了张量的平衡性。我们还可以进一步考查其保持乘法，保持$*$运算及保持单位元。如：
+\[
+\pi_A(a_1a_2)(e\otimes v)=a_1(a_2e)\otimes v=\pi_A(a_1)\pi_A(a_2)(e\otimes v)
+\]
+
+\textbf{Lemma 2.15} \textit{The matrix algebra} $M_n(\mathbb{C})$ \textit{has a unique irreducible representation (up to isomorphism) given by the defining representation on } $\mathbb{C}^n$.
+\begin{proof}
+     It is clear that $\mathbb{C}^n$ is an irreducible representation of $A=M_n(\mathbb{C})$. Suppose $H$ is irreducible and of dimension $K$, and define a linear map
+\[\phi:\underbrace{A\oplus\cdots \oplus A}_{K\, \text{copies}}\rightarrow H^*; \quad \phi(a_1,\ldots , a_K)\rightarrow e^1\circ a_1^t+\cdots+e^K\circ a^t_K\]
+in terms of a basis $\{e^1,\ldots e^K\}$ of the dual vector space $H^*$. Here $v\circ a$ denotes pre-composition of $v\in H^*$ with $a\in A$, acting on $H$. This is a morphism of $M_n(\mathbb{C})$-modules, provided a matrix $a$ acts on the dual vector space $H^*$ by sending $v\mapsto v\circ a^t$. It is also surjective, so that the dual map $\phi^*:H\rightarrow (A^K)^*$ is injective. Upon identifying $(A^K)^*$ with $A^K$ as $A$-modules, and noting that $A=M_n(\mathbb{C})\simeq \oplus^n\mathbb{C}^n$ as $A$-modules, it follows that $H$ is a submodule of $A^K\simeq\oplus^{nK}\mathbb{C}^n$. By irreducibility $H\simeq \mathbb{C}^n$.
+\qedhere
+\end{proof}
+
+
+Now, if $A, B$ are matrix algebras of the following form
+\[
+A=\bigoplus_{i=1}^N M_{n_i}(\mathbb{C}), \quad B=\bigoplus_{j=1}^M M_{m_j}(\mathbb{C}),
+\]
+then $\hat{A}\simeq\hat{B}$ implies that $N=M$. Then, define
+\[
+E\coloneq\bigoplus_{i=1}^N\mathbb{C}^{n_i}\otimes\mathbb{C}^{m_i},
+\]
+with $A$ acting by block-diagonal matrices on the first tensor and $B$ acting similarly by right matrix multiplication on the second leg of the tensor product. Also, set
+\[
+F\coloneq\bigoplus_{i=1}^N\mathbb{C}^{m_i}\otimes\mathbb{C}^{n_i},
+\]
+with $B$ now acting on the left and $A$ on the right. Then as above,
+\[
+\begin{split}
+    E\otimes_BF &\simeq\bigoplus_{i=1}^N(\mathbb{C}^{n_i}\otimes\mathbb{C}^{m_i})\otimes_{M_{m_i}(\mathbb{C})}(\mathbb{C}^{m_i}\otimes\mathbb{C}^{n_i})\\
+    &\simeq\bigoplus_{i=1}^N\mathbb{C}^{n_i}\otimes(\mathbb{C}^{m_i}\otimes_{M_{m_i}(\mathbb{C})}\mathbb{C}^{m_i})\otimes\mathbb{C}^{n_i}\\
+    &\simeq\bigoplus_{i=1}^N\mathbb{C}^{n_i}\otimes\mathbb{C}^{n_i}\simeq A,
+\end{split}
+\]
+and similarly we obtain $F\otimes_A E\simeq B$, as required. \hfill  $\qedsymbol$
+
+\textbf{Exercise 2.10} Fill in the gaps in the above proof:
+\begin{enumerate}
+    \item Show that the represantation $\pi_A$ defined by Eqn.~[\ref{eqn:ProveMorita}] is irreducible if and only if $\pi_B$ is.
+    \item Show that the association of the class $[\pi_A]$ to $[\pi_B]$ through Eqn.~[\ref{eqn:ProveMorita}] is independent of the choice of representatives $\pi_A$ and $\pi_B$.
+\end{enumerate}
+\textbf{一些相关的思考：} 关于这个问题的第一点，设$(\pi_B,H)$是一个 $B$-表示。它不可约的意思是$H$没有非零、非整体的闭不变子空间。我们可以用“反方向的函子（functor）”来排除不变子空间。假设$(\pi_B,H)$不可约，可以证明$(\pi_A,E\otimes_BH)$也不可约。设$M\subset E\otimes_BH$是一个$\pi_A$-不变子空间。对它施加反方向的函子：
+\[
+N\coloneq F\otimes_AM\subset F\otimes_A(E\otimes_BH)\simeq H.
+\]
+因为构造是自然的，$N$是$\pi_B$-不变子空间。同时由于$(\pi_B,H)$不可约，$N$只能是0或$H$。再用Morita等价的“互为逆”性质可以看出，若$N=0$则$M=0$，否则$F\otimes_AM\neq0$；若$N=H$，则$M=E\otimes_BH$，否则$F\otimes_AM$不可能等于整个$H$. 于是$M$只能是0或$E\otimes_BH$，所以$(\pi_A,E\otimes_BH)$不可约。
+
+反过来，如果从$(\pi_A,W)$出发，假设它不可约。则可取$\pi_B$在$F\otimes_AW$上。若有非平凡$\pi_B$-不变子空间$N\subset F\otimes_AW$, 施加$E\otimes_B$上去可得到
+\[
+M\coloneq E\otimes_BN\subset E\otimes_B(F\otimes_AW)\simeq W,
+\]
+同样与$(\pi_A, W)$的不可约性矛盾。
+
+总结来说，Morita等价给出的$\hat{A}\simeq\hat{B}$不是随便的集合对应，而是由范畴等价诱导的。范畴等价会把不可约表示对应到不可约表示。用$E\otimes_B-$与$F\otimes_A-$这对互逆函子就能严格证明$(\pi_B,H)$不可约$\Leftrightarrow(\pi_A,E\otimes_BH)$不可约。 
+
+下面来更具体地说说\textbf{函子（functor）}。用文字解释说是函子是一种“保持结构的映射”，它把一个范畴里的对象和态射映射到另一个范畴里，并且保持复合和单位态射。用公式表达就是，一个从范畴$C\rightarrow D$的函子$F$包含两个部分：1.对象映射$A\mapsto F(A)$; 2. 态射映射 $f:A\rightarrow B\mapsto F(f):F(A)\rightarrow F(B)$. 而必须满足的两条关键规则是：1保持复合$F(g\circ f)=F(g)\circ F(f)$与2.保持单位态射$F(\text{id}_A)=\text{id}_{F(A)}$.这两条规则的重要性在于它们让我们能“把整个数学结构”从一个范畴搬到另外一个范畴中去。函子的作用结果类似于日本东京复刻了大唐时代的长安。日本东京是将长安的城市布局，坊市制度，宫城位置及主干道等等结构性东西搬到了日本的土地上了。
+
+至于本题的第二点的意思，如果从$[\pi_B]\in\hat{B}$中选一个具体的表示$\pi_B$, 我们因此可以通过公式$\pi_A(a)(e\otimes v)=ae\otimes v$得到一个具体的$\pi_A$。但如果换一个等价的表示$\pi_B^{\prime}\sim \pi_B$, 我们得到的$\pi_A^{\prime}$仍然与$\pi_A$等价。也就是说这个\textbf{构造只依赖于等价类，不依赖于具体代表}。这个说法之所以是对的，原因是\textbf{等价的表示只差一个酉同构}，而这个酉同构可以自然地提升到张量积上。设
+\[
+U:H\rightarrow H^{\prime}
+\]
+是两个$B$表示$\pi_B$和$\pi_B^{\prime}$之间的酉同构：
+\[U\pi_B(b)=\pi_B^{\prime}(b)U.\]
+依此，我们构造：
+\[\tilde{U}\coloneq\text{id}_E\otimes U: E\otimes_BH\rightarrow E\otimes_BH^{\prime}.\]
+这是一个自然的映射，因为$E$是左$A$-模；$H$和$H\prime$是右$B$-模；同时张量积是平衡的。于是：
+\[\tilde{U}(e\otimes v)=e\otimes Uv.\]
+现在让我们来检查我们所构造出来的$\tilde{U}$是否 intertwine $\pi_A$和$\pi_A^{\prime}$:
+\[\tilde{U}(\pi_A(a)(e\otimes v))=\tilde{U}(ae\otimes v)=ae\otimes Uv=\pi_A^{\prime}(a)(e\otimes Uv)=\pi^{\prime}_A(a)\tilde{U}(e\otimes v).\]
+因此我们有：
+\[\tilde{U}\pi_A(a)=\pi_A^{\prime}(a)\tilde{U}.\]
+即$\pi_A$与$\pi_A^{\prime}$是酉等价的表示。
+
+\textbf{Theorem 2.18} \textit{Let $d_{ij}$ be a metric on the space X of N points, and set $A=\mathbb{C}^N$ with elements $a=(a(i))^N_{i=1}$, so that $\hat{A}\simeq X$. Then there exists a representation $\pi$ of $A$ on a finite-dimentional inner space $H$ and a symmetric operator $D$ on $H$ such that}
+\begin{equation}
+    d_{ij}=\sup_{a\in A}\{|a(i)-a(j)|:\Vert [D, \pi(a)]\Vert \leq 1\}.
+    \label{eqn:metric}
+\end{equation}
+\begin{proof}
+    We claim that this would follow from the equality
+    \[
+    \Vert[D,\pi(a)]\Vert=\max_{k\neq l}\Bigg\{\frac{1}{d_{kl}}|a(k)-a(l)|\Bigg\}. \tag*{(*)}
+    \]
+    Indeed,  if this holds, then
+    \[
+    \sup_a\{|a(i)-a(j)|:\Vert[D,a]\Vert\leq1\}\leq d_{ij}.
+    \]
+    The reverse inequality follows by taking $a\in A$ for fixed $i, j$ to be $a(k)=d_{ik}$. Then, we find $|a(i)-a(j)|=d_{ij}$, while $\Vert[D,\pi(a)]\Vert\leq1$ for this $a$ follows from the reverse triangle inequality for $d_{ij}$:
+    \[
+    \frac{1}{d_{kl}}|a(k)-a(l)|=\frac{1}{d_{kl}}|d_{ik}-d_{il}|\leq 1.
+    \]
+    We prove (*) by induction on $N$. If $N=2$, then on $H=\mathbb{C}^2$ we define a representation $\pi:A\rightarrow L(H)$ and a hermitian matrix $D$ by 
+    \[
+    \begin{pmatrix}
+        a(1) & 0 \\
+        0  & a(2)
+    \end{pmatrix},\quad
+    \begin{pmatrix}
+        0 & (d_{12})^{-1}\\
+        (d_{12})^{-1} & 0
+    \end{pmatrix}.
+    \]
+    It follows that $\Vert[D,a]\Vert=(d_{12})^{-1}|a(1)-a(2)|$.
+
+    Suppose then that (*) holds for $N$, with representation $\pi_N$ of $\mathbb{C}^N$ on an inner product space $H_N$ and symmetric operator $D_N$; we will show that it also holds for $N+1$. We define
+    \[ 
+    H_{N+1}=H_N\oplus\bigoplus_{i=1}^NH_N^i
+    \]
+    with $H_N^i\coloneq \mathbb{C}^2$. Imitating the above construction in the case $N=2$, we define the representation $\pi_{N+1}$ by
+    \[
+    \begin{split}
+        \pi_{N+1}(a(1),&\ldots,a(N+1))=\pi_N(a(1),\ldots,a(N))\\
+        &\oplus\begin{pmatrix}
+            a(1)&0\\0&a(N+1)
+        \end{pmatrix}\oplus\cdots\oplus
+        \begin{pmatrix}
+            a(N)&0\\0&a(N+1)
+        \end{pmatrix},
+    \end{split}
+    \]
+    and define the operator $D_{N+1}$ by
+    \[
+    \begin{split}
+        D_{N+1}=D_N&\oplus\begin{pmatrix}
+        0& (d_{1(N+1)})^{-1}\\(d_{1(N+1)})^{-1}&0
+    \end{pmatrix}\\
+    &\oplus\cdots\oplus\begin{pmatrix}
+        0 & (d_{N(N+1)})^{-1}\\ (d_{N(N+1)})^{-1}&0
+    \end{pmatrix}.
+    \end{split}   
+    \]
+    It follows by the induction hypothesis that (*) holds for $N+1$.
+\end{proof}
+
+\textbf{一些关于这个定理及其证明的想法：} 这里“taking $a\in A$ for fixed $i, j$ to be $a(k)=d_{ik}$”是一个很聪明的做法。这个选择的一个必然结果是：
+\[
+|a(i)-a(j)|=|d_{ii}-d_{ij}|=|0-d_{ij}|=d_{ij}.
+\]
+从这里可以看出建立在这个定义之上的差值$|a(i)-a(j)|$刚好就是我们想要的$d_{ij}$。同时
+\[
+\frac{|a(k)-a(l)|}{d_{kl}}=\frac{|d_{ik}-d_{il}|}{d_{kl}}\leq 1
+\]
+由三角不等式保证。因此这样构造出来的$a$满足（*）条件。
+
+还有就是这里的$\Vert[D,a]\Vert$定义了矩阵的\textbf{算子}范数，即最大奇异值，也被称为\textit{Lipschitz}常数。通常定义为：
+\[
+\text{Lip}(f)=\sup_{x\neq y}\frac{|f(x)-f(y)|}{d(x,y)},
+\]
+其中的$f:X\rightarrow R$是任一给定的函数。这个Lipschitz常数可以被看成是离散空间上的“导数最大值”。这里的$D$是一个微分算子（Dirac operator），而$[D,a]$则可被视为“导数”。
+
+这个定理的意义就在于它告诉我们任意有限度量空间都可以用一个“谱三元组”(spectral triple)来表示。也就是说一个有限集合$X$加上一个距离$d_{ij}$可以完全等价地表示为一个交换$C*$-代数$A=\mathbb{C}^N$,一个表示$\pi$和一个对称算子$D$。距离$d_{ij}$由公式~(\ref{eqn:metric})得出。这就是非交换几何的核心思想：几何=代数+微分结构（由$D$给出）。也就是说几何对象如度量空间，流形，黎曼几何，曲率、测地线、体积皆可由$C*$-代数，representation及Dirac算子来描述。
+
+\textbf{Exercise 2.13} Show that the $d_{ij}$ in Eqn.~(\ref{eqn:ExtMetric})
+\begin{equation}
+    d_{ij}=\sup_{a\in A}\{|\text{Tr}\, a(i)-\text{Tr}\,a(j)|:\Vert [D,a]\Vert\leq 1\},
+    \label{eqn:ExtMetric}
+\end{equation}
+ is a metric on $\hat{A}$ by establishing that 
+ \[
+ d_{ij}=0\Longleftrightarrow i=j,\quad d_{ij}=d_{ji},\quad d_{ij}\leq d_{ik}+d_{kj}.
+ \]
+
+ \textbf{思路：} 欲证明其为metric，需要证明其满足metric的三条性质。其一：非退化性，即：$d_{ij}=0\Leftrightarrow i=j$. 这一条是显然满足的，因为已经条件就是这样写的。而当$i\neq j$时，我们可取函数 $a(k)=d(i,k)$,就像我们在证明定理2.18时做的那样。那么，$|a(i)-a(j)|=d(i,j)>0$, 并且这个$a$的Lipschitz常数$\leq 1$，因此它是允许的测试函数。所以，$d_{ij}\geq |a(i)-a(j)|=d(i,j)>0$. 因此，$d_{ij}=0$不可能发生，除非$i=j$. 
+ 
+ 其二：对称性，即$d_{ij}=d_{ji}$. 因为$|a(i)-a(j)|=|a(j)-a(i)|$,同时条件$\Vert[D,a]\Vert\leq 1$与交换$i,j$无关，所以有
+ \[d_{ij}=\sup|a(i)-a(j)|=\sup|a(j)-a(i)|=d_{ji}.\]
+ 从而保证对称性自动满足。
+
+ 其三是三角不等式：$d_{ij}\leq d_{ik}+d_{kj}$. 这是最关键的一步。但是我们知道对任意满足$\Vert[D,a]\Vert\leq1$的函数$a$，我们有：
+ \[|a(i)-a(j)|\leq |a(i)-a(k)|+|a(k)-a(j)|.\]
+ 因为$a$ 是1-Lipschitz，即：
+ \[|a(i)-a(k)|\leq d_{ik}, \quad |a(k)-a(j)|\leq d_{kj}.\]
+ 因此有：
+ \[|a(i)-a(j)\neq d_{ik}+d_{kj}.\]
+ 现在对所有这样的$a$取上确界：
+ \[d_{ij}=\sup_{\Vert[D,a]\Vert\leq1}|a(i)-a(j)|\leq d_{ik}+d_{kj}.\]
+ 此即三角不等式。
+
+ 这个习题告诉我们一个度量空间可以完全由一个Dirac算子$D$和对易子范数$[D,a]$来重建；“导数”可以用对易子$[D,a]$表示；“变化率”可以用算子范数$\Vert[D,a]\Vert$表示；“距离”可用Lipschitz常数$\leq1$的函数来测量。这正是非交换几何核心哲学：几何=代数+Dirac算子。
+
+ \textbf{Definition 2.19} A finite spectral triple is a triple $(A, H, D)$ consisting of a unital $*$-algebra $A$ represented faithfully on a finite-dimensiional Hilbert space $H$, together with a symmetric operator $D:H\rightarrow H$.
+
+ \textbf{Lemma 2.20} \textit{If A is a unital $*$-algebra that acts faithfully on a finite-dimentional Hilbert space, then A is a matrix algebra of the form} 
+ \[
+ A\simeq\bigoplus_{i=1}^N M_{n_i}(\mathbb{C}). 
+ \]
+ \begin{proof}
+    Since $A$ acts faithfully on a Hilbert space, it is a $*$-subalgebra of a matrix algebra $L(H)=M_{\text{dim}(H)}(\mathbb{C})$; the only such subalgebras are themselves matrix algebras.
+ \end{proof}
+ \textbf{关于引理 2.20 及其证明的一点想法：} 这个引理及其证明中需要特别注意的是一个词：Faithfully。这个词不是一个修饰词，而是一个有严格技术含义的数学术语。它在C$*$-代数与表示论中有非常明确的作用。当一个表示$\pi:A\rightarrow B(H)$ 被称为faithfully（忠实的），其意义是$\pi$是一个单射(injective)。这就是说表示$\pi$没有将不同的元素压成同一个算子，在映射过程中没有信息的丢失。$A$的代数结构完全嵌入到$B(H)$中去了。 
+
+ \textbf{Definition 2.22} Let ($A, H, D$) be a finite spectral triple. The $A$-bimodule of \textit{Connes's differential one-forms} is given by 
+ \[
+ \Omega_D^1(A)\coloneqq\left\{\sum_ka_k[D, b_k]: a_k, b_k\in A\right\}.
+ \]
+ Consequently, there is a map $\text{d}: A\rightarrow \Omega_D^1(A)$, given by $\text{d}(\cdot)=[D,\cdot]$.
+
+ \textbf{对这个交换几何中微分1形式定义的理解：}在经典微分几何里如果有$f\in C^{\infty}(M)$, 其微分形式是$\text{d}f$. 则1-form则写成$\omega=\sum_if_i\text{d}g_i$. Connes则把这个结构完全代数化了，其中函数被元素$a\in A$所取代；微分则被替换为对易子$[D,a]$; 1-form 就相应得写成$\sum_ka_k[D,b_k]$. 举一个直观的例子，假设$A=C^N$， $D$是在定理2.18中构造的离散Dirac算子。那么：
+ \[
+ [D,b]_{ij}=\frac{b(i)-b(j)}{d(i,j)},
+ \]
+ 于是有了：
+ \[
+ a[D,b]_{ij}=a(i)\frac{b(i)-b(j)}{d(i,j)}.
+ \]
+ 这正是离散微分形式：
+ \[
+ \omega(i,j)=a(i)\frac{b(i)-b(j)}{d(i,j)}.
+ \]
+ 此外，该定义中的$\text{d}(\cdot)=[D,\cdot]$是非常精妙的，它将原本属于几何层面的``导数''操作转化成了\textbf{对易关系}。这意味着我们不再需要流形空间的坐标，只要有算子$D$和代数$A$就能定义什么是``变化''。定义中指出$\Omega_D^1(A)$是一个$A$-bimodule。这一点可以简单验证。首先是左作用，$\sum_ka_k[D,b_k]$显然可以通过左乘一个$a\in A$保持在集合内；而右作用则可利用性质
+ \[
+ [D, bc]=[D,b]c+b[D,c] \quad (\text{A variant of Leibniz principle}),
+ \]
+ 我们会发现将$c\in A$乘在右边后，依然可以将其写成一系列的$a_k^{\prime}[D, b_k^{\prime}]$之和。这个双模性质模拟了经典微分形式既可以从左边乘以函数也可以从右边乘以函数的性质。
+
+ 总之，该定义的强大之处在于它的\textbf{统一性}。它一方面可以复现经典，如果$A=C^{\infty}(M)$, 这个定义生成的$\Omega_D^1(A)$经过适当的等价处理后正好同构于切丛的截面；另一方面它可以处理离散空间。
+
+ 顺便，我们来简单回顾一下微分几何中定义1-form的初衷及其意义。在微分几何中，我们定义1-form的用意是为了给流形提供一种不需要依赖于坐标系的测量机制。如果把向量（Vector）看作是流上的``位移''或``速度''。那么1-form就是用来测量这些向量的标尺。在欧几里得空间，我们习惯用内积来计算投影。但是在广义流形上，没有预设的度量(Metric)。为了在没有距离概念的场合也能进行计算，数学家定义了1-form。其依据是1-form是$\omega$切空间$T_pM$的对偶空间$T_p^{*}M$中的元素：
+ \[
+ \text{d}f_p:T_pM\rightarrow R.
+ \]
+这是一个线性映射，输入一个向量$v$，输出一个实数$\langle\omega,v\rangle$。直观理解就是：向量$v$是``箭头''，1-form是``平行平面簇''。当箭头穿过这些平面时，穿过的平面数量就是测量的结果。
+
+1-form可以拿来定义线积分。这是1-form最实际的用途。原因是我们不能直接对向量场进行积分，因为向量随坐标系的变换而变化。而1-form的变换法则恰好抵消了积分变量替换时的雅可比行列式的影响。这样我们可以定义\textbf{路径无关}的物理量。例如：力场本身不能直接积分，但是是``功''可以，而它是力$F$与位移$\text{d}x$的缩并。从数学角度看，$\text{d}x^i$ 本身就是最基础的1-form。而$\omega=\sum_if_i\text{d}x^i$这种形式天然就是为了积分而生。
