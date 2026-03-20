@@ -353,3 +353,5 @@ U:H\rightarrow H^{\prime}
 这是一个线性映射，输入一个向量$v$，输出一个实数$\langle\omega,v\rangle$。直观理解就是：向量$v$是``箭头''，1-form是``平行平面簇''。当箭头穿过这些平面时，穿过的平面数量就是测量的结果。
 
 1-form可以拿来定义线积分。这是1-form最实际的用途。原因是我们不能直接对向量场进行积分，因为向量随坐标系的变换而变化。而1-form的变换法则恰好抵消了积分变量替换时的雅可比行列式的影响。这样我们可以定义\textbf{路径无关}的物理量。例如：力场本身不能直接积分，但是是``功''可以，而它是力$F$与位移$\text{d}x$的缩并。从数学角度看，$\text{d}x^i$ 本身就是最基础的1-form。而$\omega=\sum_if_i\text{d}x^i$这种形式天然就是为了积分而生。
+
+\textbf{Lemma 2.23} \textit{Let $(A, H, D)=(M_n(\mathbb{C}),\mathbb{C}^n, D)$ be the finite spectral triple of Eample 2.21 with $D$ a hermitian $n\times n$ matrix. If $D$ is not a multiple of the identity then $\Omega_D^1(A)\simeq M_n(\mathbb{C})$.} 
