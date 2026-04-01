@@ -1,10 +1,10 @@
 %!TEX root = LearningNCG.tex
 \subsection{Chapter 2}
-\textbf{Definition 2.4} A \textit{representation} of a finite-dimensional *-algebra $A$ is a pair $(H,\pi)$ where $H$ is a (finite-dimensional, complex) inner product space and $\pi$ is a *-algebra map \[\pi:A\rightarrow L(H).\] A representation $(H,\pi)$ is called irreducible if $H\neq0$ and the only subspaces in $H$ that are left invariant under the action of $A$ are $\{0\}$ or $H$.
+\textbf{Definition 2.4} A \textit{representation} of a finite-dimensional $*$-algebra $A$ is a pair $(H,\pi)$ where $H$ is a (finite-dimensional, complex) inner product space and $\pi$ is a $*$-algebra map \[\pi:A\rightarrow L(H).\] A representation $(H,\pi)$ is called irreducible if $H\neq0$ and the only subspaces in $H$ that are left invariant under the action of $A$ are $\{0\}$ or $H$.
 
 \textbf{对这个定义的理解：} 这里所谓的representation其实就是把抽象代数$A$中的元素变成Hilbert空间$H$上的具体算子。也就是说，$A$本来是一个抽象的“算子代数”，而$L(H)$是“真正的算子代数（矩阵）”；而$\pi$则是把抽象算子变成具体算子的“解释器”。
 
-为什么这里的映射必须是$*-algebra$ map 呢？原因是$*-algebra A$有加法、乘法、单位元，同时$A$有$*$运算（类似共轭转置）。相应的，为保持住这些结构，$\pi$ 就必须满足：\[\pi(a+b)=\pi(a)+\pi(b)\quad \text{加法}\] \[\pi(ab)=\pi(a)\pi(b)\quad \text{乘法}\]及\[\pi(a^*)=\pi(a)^* \quad\text{共轭}\] 尤其是这最后一条意味着抽象的“自伴算子”（厄米算子）会被表示成真正的“自伴矩阵”。
+为什么这里的映射必须是$*$-algebra map 呢？原因是$*$-algebra $A$ 有加法、乘法、单位元，同时$A$有$*$运算（类似共轭转置）。相应的，为保持住这些结构，$\pi$ 就必须满足：\[\pi(a+b)=\pi(a)+\pi(b)\quad \text{加法}\] \[\pi(ab)=\pi(a)\pi(b)\quad \text{乘法}\]及\[\pi(a^*)=\pi(a)^* \quad\text{共轭}\] 尤其是这最后一条意味着抽象的“自伴算子”（厄米算子）会被表示成真正的“自伴矩阵”。
 
 此外， 这里选择 Hilbert 空间也是有原因的。因为 Hilbert 空间有内积，有范数，有完备性，可以在上面讨论算子的连续性、自伴性及谱。它是量子力学的自然舞台也是 $C^*$ 的唯一合理载体。而关于Hilbert空间的$ L(H)$的这种写法也有其特定的含义：$ L(H)$代表了$H$上所有有界线性算子的集合，换句话说就是所有$n\times n$复矩阵的集合。即 \[L(H)\cong M_n(C).\] 之所以这里不采用 $M_n(C)$ 是因为只有在有限维的情况下 $L(H)$ 才能和矩阵划等号，而在无限维的情况下矩阵不再是合适的语言。但“线性算子”仍然是核心对象。所以数学家统一将其写成：\[L(H)=\{T:H\rightarrow H|T \text{是有界线性算子}\}。\]另外，这里强调“有界”的原因是在无限维的 Hilbert 空间里有些线性算子是“无界”的，如微分算子。这种无界算子是不能被放进$C^*$代数里的，也因此不能直接用于表示论。
 
@@ -354,7 +354,27 @@ U:H\rightarrow H^{\prime}
 
 1-form可以拿来定义线积分。这是1-form最实际的用途。原因是我们不能直接对向量场进行积分，因为向量随坐标系的变换而变化。而1-form的变换法则恰好抵消了积分变量替换时的雅可比行列式的影响。这样我们可以定义\textbf{路径无关}的物理量。例如：力场本身不能直接积分，但是是``功''可以，而它是力$F$与位移$\text{d}x$的缩并。从数学角度看，$\text{d}x^i$ 本身就是最基础的1-form。而$\omega=\sum_if_i\text{d}x^i$这种形式天然就是为了积分而生。
 
-\textbf{Lemma 2.23} \textit{Let $(A, H, D)=(M_n(\mathbb{C}),\mathbb{C}^n, D)$ be the finite spectral triple of Eample 2.21 with $D$ a hermitian $n\times n$ matrix. If $D$ is not a multiple of the identity then $\Omega_D^1(A)\simeq M_n(\mathbb{C})$.} 
+\textbf{Lemma 2.23} \textit{Let $(A, H, D)=(M_n(\mathbb{C}),\mathbb{C}^n, D)$ be the finite spectral triple of Example 2.21 with $D$ a hermitian $n\times n$ matrix. If $D$ is not a multiple of the identity then $\Omega_D^1(A)\simeq M_n(\mathbb{C})$.} 
+\begin{proof}
+    We may assume that $D$ is a diagonal matrix: $D=\sum_i\lambda_ie_{ii}$ in terms of real numbers $\lambda_i$ (not all equal) and the standard basis $\{e_{ij}\}$ of $M_n(\mathbb{C})$. For fixed $i, j$ choose $k$ such that $\lambda_k\neq \lambda_j$. Then
+    \[
+    \left(\frac{1}{\lambda_k-\lambda_j}e_{ik}\right)[D,e_{kj}]=e_{ij}.
+    \]
+    Hence, since $e_{ik}, e_{kj}\in M_n(\mathbb{C})$, any basis vector $e_{ij}\in\Omega_D^1(A)\subset L(\mathbb{C}^n\simeq M_n(\mathbb{C}))$, the result follows.
+\end{proof}
+\textbf{对这一引理的理解：} 这一引理告诉我们，在最简单的矩阵代数形式中，只要算子$D$不是平凡的，即不是单位矩阵的倍数，那么前文Connes定义的微分1-form$\Omega_D^1(A)$就会``铺满''整个矩阵代数空间。这意味着，在非交换的情形下，``微分''这种操作具有极强的生成能力。我们只需要一个非平凡$D$，就能通过代数运算重构出整个算子空间。
+
+此外，这里要求$D$不是单位矩阵的倍数也是有原因的。因为如果$D=\lambda I$, 那么对于任何 $b \in A$，交换子 $[D, b] = [\lambda I, b] = 0$。 此时，$\Omega_D^1(A) = \{0\}$。这对应于一个“死掉”的几何。如果没有算子 $D$ 带来的能量差或空间梯度（特征值不相等），就没有所谓的“位移”或“变化”，也就无法定义微分。
+
+至于对于这段证明我们可以这样的理解。对于给定的有限谱三元组 $(A, H, D)=(M_n(\mathbb{C}), \mathbb{C}^n, D)$，存在幺正矩阵 $U$ 使得
+\[UDU^*=\text{diag}(\lambda_1,\ldots, \lambda_n).\]
+而共轭变换
+\[A\mapsto UAU^*,\quad D\mapsto UDU^*\]
+不会改变$\Omega_D^1(A)$作为$M_n(\mathbb{C})$-bimodule 结构。所以在不失一般性的情况下我们可以直接假设 $D=\text{diag}(\lambda_1,\ldots, \lambda_n).$ 因其非平凡性，我们有 $k\neq l$使得$\lambda_k\neq\lambda_l$. 如果记$e_{ij}$为标准矩阵（第$i$行第$j$列为1，其余为0）。因为$D$是对角矩阵，有：
+\[De_{kl}=\lambda_ke_{kl}, \quad e_{kl}D=\lambda_le_{el}.\]
+所以有
+\[[D,e_{kl}]=De_{kl}-e_{kl}D=(\lambda_k-\lambda_l)e_{kl}.\]
+到此，就不难理解书中给出的证明了。
 
 \textbf{Definition 2.24} Two finite spectral triple $(A_1, H_1, D_1)$ and $(A_2, H_2, D_2)$ are called unitarily equivalent if $A_1=A_2$ and if there exists a unitary operator $U:H_1\rightarrow H_2$ such that
 \[
@@ -364,4 +384,4 @@ U:H\rightarrow H^{\prime}
 \end{split}
 \]
 
-\textbf{Remark 2.25} A special type of unitary equvalence is given by the unitaries in the matrix algebra $A$ itself. Indeed, for any such unitary element $u$ the spectral triples $(A, H, D)$ and $(A, H, uDU^*)$ are unitarily equivalent. Another way of writing $uDu^*$ is $D+u[D, u^*]$, so that this type of unitary equivalence effectively adds a differential one-form to $D$.
+\textbf{Remark 2.25} A special type of unitary equvalence is given by the unitaries in the matrix algebra $A$ itself. Indeed, for any such unitary element $u$ the spectral triples $(A, H, D)$ and $(A, H, uDu^*)$ are unitarily equivalent. Another way of writing $uDu^*$ is $D+u[D, u^*]$, so that this type of unitary equivalence effectively adds a differential one-form to $D$.
