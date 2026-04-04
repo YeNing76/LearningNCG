@@ -362,7 +362,7 @@ U:H\rightarrow H^{\prime}
     \]
     Hence, since $e_{ik}, e_{kj}\in M_n(\mathbb{C})$, any basis vector $e_{ij}\in\Omega_D^1(A)\subset L(\mathbb{C}^n\simeq M_n(\mathbb{C}))$, the result follows.
 \end{proof}
-\textbf{对这一引理的理解：} 这一引理告诉我们，在最简单的矩阵代数形式中，只要算子$D$不是平凡的，即不是单位矩阵的倍数，那么前文Connes定义的微分1-form$\Omega_D^1(A)$就会``铺满''整个矩阵代数空间。这意味着，在非交换的情形下，``微分''这种操作具有极强的生成能力。我们只需要一个非平凡$D$，就能通过代数运算重构出整个算子空间。
+\textbf{对这一引理的理解：} 这一引理告诉我们，在最简单的矩阵代数形式中，只要算子$D$不是平凡的，即不是单位矩阵的倍数，那么前文Connes定义的微分1-form $\Omega_D^1(A)$ 就会``铺满''整个矩阵代数空间。这意味着，在非交换的情形下，``微分''这种操作具有极强的生成能力。我们只需要一个非平凡$D$，就能通过代数运算重构出整个算子空间。
 
 此外，这里要求$D$不是单位矩阵的倍数也是有原因的。因为如果$D=\lambda I$, 那么对于任何 $b \in A$，交换子 $[D, b] = [\lambda I, b] = 0$。 此时，$\Omega_D^1(A) = \{0\}$。这对应于一个“死掉”的几何。如果没有算子 $D$ 带来的能量差或空间梯度（特征值不相等），就没有所谓的“位移”或“变化”，也就无法定义微分。
 
@@ -375,6 +375,20 @@ U:H\rightarrow H^{\prime}
 所以有
 \[[D,e_{kl}]=De_{kl}-e_{kl}D=(\lambda_k-\lambda_l)e_{kl}.\]
 到此，就不难理解书中给出的证明了。
+
+\textbf{Exercise 2.17} Consider the following finite spectral triple:
+\[
+\left(A=\mathbb{C}^2, H=\mathbb{C}^2, D=\begin{pmatrix}
+ 0&\lambda\\ \bar{\lambda}&0   
+\end{pmatrix}\right),
+\]
+with $\lambda\neq0$. Show that the corresponding space of differential one-form $\Omega_D^1(A)$ is isomorphic to the vector space of all off-diagonal $2\times2$ matrices.
+
+\textbf{解答：} 对于 $D = \begin{pmatrix} 0 & \lambda \\ \bar{\lambda} & 0 \end{pmatrix}$，其特征方程为 $\det(D - \mu I) = \mu^2 - |\lambda|^2 = 0$。而其本征值为$\mu_1 = |\lambda|, \mu_2 = -|\lambda|$。题目给定 $\lambda \neq 0$，所以 $\mu_1 \neq \mu_2$。这满足了引理2.23中“$\lambda_i$ 不全相等”的条件。此时，存在酉矩阵 $U$ 使得 $U D U^* = \tilde{D} = \begin{pmatrix} |\lambda| & 0 \\ 0 & -|\lambda| \end{pmatrix}$。在这里$A = \mathbb{C}^2$（表示为对角阵 $\text{diag}(a_1, a_2)$）。设 $a = \begin{pmatrix} a_1 & 0 \\ 0 & a_2 \end{pmatrix}, b = \begin{pmatrix} b_1 & 0 \\ 0 & b_2 \end{pmatrix} \in A$。计算交换子：
+\[[D, b] = \begin{pmatrix} 0 & \lambda(b_2 - b_1) \\ \bar{\lambda}(b_1 - b_2) & 0 \end{pmatrix}\]
+现在，我们要看 $a[D, b]$ 能生成什么：
+\[a[D, b] = \begin{pmatrix} a_1 & 0 \\ 0 & a_2 \end{pmatrix} \begin{pmatrix} 0 & \lambda(b_2 - b_1) \\ \bar{\lambda}(b_1 - b_2) & 0 \end{pmatrix} = \begin{pmatrix} 0 & a_1 \lambda(b_2 - b_1) \\ a_2 \bar{\lambda}(b_1 - b_2) & 0 \end{pmatrix}\]
+右侧元 ($e_{12}$ 方向)：由 $a_1 \lambda (b_2 - b_1)$ 控制。由于 $\lambda \neq 0$，我们可以通过调节 $a_1, b_1, b_2$ 使这个值取遍所有复数。而左侧元 ($e_{21}$ 方向)：由 $a_2 \bar{\lambda} (b_1 - b_2)$ 控制。同理可取遍所有复数。结论是所有的 $\Omega_D^1(A)$ 元素都是形如 $\begin{pmatrix} 0 & \alpha \\ \beta & 0 \end{pmatrix}$ 的矩阵。而这时我们会发现无论怎么求和 $\sum a_k [D, b_k]$，对角线永远是 0。这就是为什么它只同构于“所有\textit{非对角矩阵}构成的向量空间”。
 
 \textbf{Definition 2.24} Two finite spectral triple $(A_1, H_1, D_1)$ and $(A_2, H_2, D_2)$ are called unitarily equivalent if $A_1=A_2$ and if there exists a unitary operator $U:H_1\rightarrow H_2$ such that
 \[
