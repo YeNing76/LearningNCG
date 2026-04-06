@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.7.9)  1 APR 2026 14:42
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.7.9)  6 APR 2026 09:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1478,7 +1478,7 @@ Missing character: There is no 。 in font [lmroman10-regular]:mapping=tex-text;
 [2
 
 ] [3] [4] [5]
-Overfull \hbox (3.72984pt too wide) in paragraph at lines 58--59
+Overfull \hbox (3.72984pt too wide) in paragraph at lines 59--60
 []\TU/SimSun(0)/m/n/10.53937 从 \TU/lmr/m/n/10.53937 Hilbert \TU/SimSun(0)/m/n/1
 0.53937 模 块 结 构 来 解 读，|  这 应 该 看 成 是 内 积 的 传 递。|  这 一 点 体 现 在 $\OMS/cmsy/m/n/10
 .53937 h\OML/cmm/m/it/10.53937 e[] \OMS/cmsy/m/n/10.53937 
@@ -1487,7 +1487,7 @@ Overfull \hbox (3.72984pt too wide) in paragraph at lines 58--59
  []
 
 [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
-Overfull \hbox (21.69995pt too wide) in paragraph at lines 369--370
+Overfull \hbox (21.69995pt too wide) in paragraph at lines 370--371
 []\TU/SimSun(0)/m/n/10.53937 至 于 对 于 这 段 证 明 我 们 可 以 这 样 的 理 解。|  对 于 给 定 的 有 限
  谱 三 元 组 $\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 A; H; D\OT1/cmr/m/n/10.
 53937 ) = (\OML/cmm/m/it/10.53937 M[]\OT1/cmr/m/n/10.53937 (\U/msb/m/n/10.53937
@@ -1495,7 +1495,7 @@ Overfull \hbox (21.69995pt too wide) in paragraph at lines 369--370
 mm/m/it/10.53937 ; D\OT1/cmr/m/n/10.53937 )$\TU/SimSun(0)/m/n/10.53937 ，|
  []
 
-[16]) [17] (LearningNCG.aux (Exercises.aux))
+[16] [17] [18]) [19] (LearningNCG.aux (Exercises.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/08/05>
@@ -1512,12 +1512,12 @@ Package logreq Info: Writing requests to 'LearningNCG.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42828 strings out of 409617
- 920600 string characters out of 5781119
+ 42833 strings out of 409617
+ 920695 string characters out of 5781119
  1943191 words of memory out of 5000000
- 64300 multiletter control sequences out of 15000+600000
+ 64305 multiletter control sequences out of 15000+600000
  574361 words of font info for 130 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,21n,99p,1503b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on LearningNCG.pdf (17 pages).
+Output written on LearningNCG.pdf (19 pages).

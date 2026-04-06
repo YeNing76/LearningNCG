@@ -426,3 +426,22 @@ Indeed, this is precisely the property that is needed to make $D^{\prime}$ a wel
 D^{\prime}(ea\otimes\xi-e\otimes a\xi)=ea\otimes D\xi+\nabla(ea)\xi-e\otimes D(a\xi)-\nabla(e)a\xi=0.
 \]
 A map $\nabla: E\rightarrow E\otimes_A\Omega_D^1(A)$ that satisfies Eq.~\ref{eqn:LeibnizRule} is called a \textbf{connection} on the right $A$-module $E$ associated to the derivation $\text{d}:a\mapsto[D,a]\,(a\in A)$.
+
+\textbf{Theorem 2.26} \textit{If (A, H, D) is a finite spectral triple and $E\in\mathbf{KK}_f(B, A)$, then (in the above notation) (B, $E\otimes_A H, D^{\prime}$) is a finite spectral triple, provided that $\nabla$ satisfies the compatibility condition}
+\begin{equation}
+    \langle e_1, \nabla e_2\rangle_E-\langle e_1, e_2\rangle_E=\text{d}\langle e_1, e_2\rangle_E;\quad (e_1, e_2\in E).
+    \label{eqn:compatibilityCondtion}
+\end{equation}
+
+\begin{proof}
+    We only need to show that $D^{\prime}$ is a symmetric operator. Indeed, for $e_1, e_2\in E$ and $\xi_1, \xi_2\in H$ we compute
+    \[
+    \begin{split}
+        \langle e_1\otimes\xi_1, D^{\prime}(e_2\otimes\xi_2)\rangle_{E\otimes_AH}&=\langle\xi_1,\langle e_1,\nabla e_2\rangle_E\xi_2\rangle_H+\langle\xi_1,\langle e_1, e_2\rangle_ED\xi_2\rangle_H\\
+        &=\langle\xi_1,\langle\nabla e_1,e_2\rangle_E\xi_2\rangle_H+\langle\xi_1,\text{d}\langle e_1,e_2\rangle_E\xi_2\rangle_H \\
+        &\quad+\langle D\xi_1,\langle e_1, e_2\rangle_E\xi_2\rangle_H-\langle\xi_1,[D,\langle e_1,e_2\rangle_E]\xi_2\rangle_H \\
+        &=\langle D^{\prime}(e_1\otimes\xi_1),e_2\otimes\xi_2\rangle_{E\otimes_AH},
+    \end{split}
+    \]
+    using the stated compatibility condition and the fact that $D$ is symmetric.
+\end{proof}
